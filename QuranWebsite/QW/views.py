@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from .forms import LoginForm, RegisterForm
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='login')
 def homepage(request):
-    return HttpResponse('<h1>Welcome to the Quran Website</h1>')
+    return HttpResponse(f'<h1>Welcome to the Quran Website</h1>')
 
 def register(request):
     if request.method == "POST":
@@ -16,7 +18,7 @@ def register(request):
         form = RegisterForm()
     return render(request, "register.html", {"form": form})  # Corrected template path
 
-def custom_login(request):
+def login(request):
     if request.method == "POST":
         form = LoginForm(request=request, data=request.POST)
         if form.is_valid():
