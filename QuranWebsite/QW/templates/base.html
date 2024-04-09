@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Quran Website{% endblock %}</title>
+    {% block styles %}
+    <!-- Add your stylesheet links here -->
+    {% endblock %}
+</head>
+<body>
+    <header>
+    QU
+    </header>
+
+    <nav>
+      login 
+    </nav>
+
+    <main>
+        {% block content %}
+        <!-- This block will be overridden by child templates -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Add your site footer here -->
+    </footer>
+
+    {% block scripts %}
+    <!-- Add your Javascript files here -->
+    {% endblock %}
+</body>
+</html>

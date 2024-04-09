@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.urls import path
 from . import views
+from django.contrib.auth.views import LoginView, LogoutView  # Django's built-in views for login and logout
 
 urlpatterns = [
-    path('', views.homepage, name='homepage'),
+    path('register/', views.register, name='register'),
+    path('login/', views.custom_login, name='login'),
+    path('', views.homepage, name='home'),
+    path('logout/', LogoutView.as_view(next_page='login'), name='logout'),  
 ]
