@@ -20,15 +20,15 @@ embeddings_path = os.path.join(settings.BASE_DIR, 'resources', 'quran_embeddings
 model, df = load_model_and_embeddings(model_path, embeddings_path)
 class QuranSearchView(APIView):
     def get(self, request):
-        permission_classes = [IsAuthenticated]
-        authentication_classes = [SessionAuthentication, TokenAuthentication]
-        user_search, _ = UserSearch.objects.get_or_create(user=request.user)
-        if user_search.last_search_time < timezone.now() - timedelta(hours=1):
-            user_search.search_count = 0
-        if user_search.search_count >= user_search.max_search_limit:
-            return Response({"error": "Search limit reached. Please try again later."}, status=429)
-        user_search.search_count += 1
-        user_search.save()
+        # permission_classes = [IsAuthenticated]
+        # authentication_classes = [SessionAuthentication, TokenAuthentication]
+        # user_search, _ = UserSearch.objects.get_or_create(user=request.user)
+        # if user_search.last_search_time < timezone.now() - timedelta(hours=1):
+        #     user_search.search_count = 0
+        # if user_search.search_count >= user_search.max_search_limit:
+        #     return Response({"error": "Search limit reached. Please try again later."}, status=429)
+        # user_search.search_count += 1
+        # user_search.save()
         query = request.query_params.get('query', None)
         if query:
             results = find_top_related_verses(query, model, df)

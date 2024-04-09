@@ -12,10 +12,14 @@
     <header>
     QU
     </header>
-
+    {% if not request.user %}
     <nav>
-      login 
-    </nav>
+        login 
+      </nav>
+    {% else %}
+        {{request.user}}
+        logout
+    {% endif %}
 
     <main>
         {% block content %}
@@ -30,5 +34,6 @@
     {% block scripts %}
     <!-- Add your Javascript files here -->
     {% endblock %}
+
 </body>
 </html>

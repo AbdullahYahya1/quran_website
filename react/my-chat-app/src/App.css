@@ -1,0 +1,51 @@
+.App-header {
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.chat-box {
+  width: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+.message {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+  word-wrap: break-word;
+  max-width: 80%; /* Adjust this value based on your preference */
+}
+
+.user {
+  background-color: #dcf8c6;
+  align-self: flex-end;
+}
+
+.api {
+  background-color: #f0f0f0;
+  align-self: flex-start;
+}
+
+form {
+  display: flex;
+}
+
+input {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px;
+}

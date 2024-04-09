@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login')
 def homepage(request):
-    return HttpResponse(f'<h1>Welcome to the Quran Website</h1>')
+    return render(request , 'home.html')
 
 def register(request):
     if request.method == "POST":

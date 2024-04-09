@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    hi boys
+    {% csrf_token %}
+</div>
+
+<script>
+    var csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+    console.log(csrfToken)    
+</script>
+
+{% endblock %}
