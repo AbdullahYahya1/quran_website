@@ -4,22 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Quran Website{% endblock %}</title>
+    <style>
+        .App-header {
+          min-height: 10vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: calc(10px + 2vmin);
+          color: #fff;
+        }
+
+        body {
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          min-height: 100vh;
+          background-color: #242424;
+          color: #ffffffde;
+          font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        }
+
+        header {
+          width: 100%;
+          text-align: center;
+          padding: 20px 0;
+          background-color: #333;
+          font-size: 2rem;
+          color: white;
+        }
+
+        nav {
+          margin: 20px 0;
+          color: white;
+        }
+
+        main {
+          flex-grow: 1;
+          width: 90%;
+          max-width: 800px;
+        }
+
+        footer {
+          width: 100%;
+          padding: 20px 0;
+          text-align: center;
+          background-color: #333;
+          color: white;
+        }
+
+        a {
+          font-weight: 500;
+          color: #646cff;
+          text-decoration: inherit;
+        }
+
+        a:hover {
+          color: #535bf2;
+        }
+    </style>
     {% block styles %}
-    <!-- Add your stylesheet links here -->
+    <!-- Additional stylesheet links can be added here -->
     {% endblock %}
 </head>
 <body>
     <header>
     QU
     </header>
-    {% if not request.user %}
-    <nav>
-        login 
-      </nav>
-    {% else %}
-        {{request.user}}
-        logout
-    {% endif %}
+    {% block navbaritem %}
+    
+    {% endblock navbaritem %}
 
     <main>
         {% block content %}
@@ -32,7 +87,7 @@
     </footer>
 
     {% block scripts %}
-    <!-- Add your Javascript files here -->
+    <!-- Javascript files can be added here -->
     {% endblock %}
 
 </body>

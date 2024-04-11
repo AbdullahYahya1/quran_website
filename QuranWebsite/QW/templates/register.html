@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block title %}Register - Quran Website{% endblock %}
-
+{% block navbaritem %}
+<nav>
+  <a href="{% url 'login' %}">Login</a>
+</nav>
+{% endblock navbaritem %}
 {% block content %}
     <h1>Register</h1>
     <form method="post">
