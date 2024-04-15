@@ -45,8 +45,6 @@ def get_ayah_details(preprocessed_data, surah_id, ayah_id):
 file_path = os.path.join(settings.BASE_DIR, 'resources', 'Quran.json')
 preprocessed_data = load_and_preprocess_quran_data(file_path)
 
-import re  # Import regular expressions
-
 class QuranSearchView(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [SessionAuthentication, TokenAuthentication]
@@ -71,19 +69,10 @@ class QuranSearchView(APIView):
                 ayah_details = get_ayah_details(preprocessed_data, int(row['surah_name']), int(row['verse_id']-1))
                 name = ayah_details.get('Surah Name', 'Unknown Surah')
                 arabic = ayah_details.get('Arabic Text', 'No Arabic text available')
-
-                # Process the text to modify the number
-                match = re.match(r'(\d+)(.*)', row['processed_text'])
-                if match:
-                    number = int(match.group(1)) - 1
-                    text = f"{number}{match.group(2)}"
-                else:
-                    text = row['processed_text']  # Use original text if no number is found
-
                 data.append({
                     "surah_name": name,
                     "verse_id": row['verse_id'],
-                    "text": f"{text} * {arabic}"
+                    "text": f"{row['processed_text']} * {arabic}"
                 })
             return Response({"results": data})
         return Response({"error": "No query provided"}, status=400)
